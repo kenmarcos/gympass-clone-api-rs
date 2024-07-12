@@ -7,7 +7,7 @@ import { UserAlreadyExistsError } from "./errors/user-already-exists-error";
 let usersRepository: InMemoryUsersRepository;
 let sut: RegisterService;
 
-describe("RegisterService", () => {
+describe("Register Service", () => {
   beforeEach(() => {
     usersRepository = new InMemoryUsersRepository();
     sut = new RegisterService(usersRepository);
@@ -47,12 +47,13 @@ describe("RegisterService", () => {
       password: "123456",
     });
 
-    await expect(() =>
-      sut.execute({
-        name: "John Doe",
-        email,
-        password: "123456",
-      })
+    expect(
+      async () =>
+        await sut.execute({
+          name: "John Doe",
+          email,
+          password: "123456",
+        })
     ).rejects.toBeInstanceOf(UserAlreadyExistsError);
   });
 });
