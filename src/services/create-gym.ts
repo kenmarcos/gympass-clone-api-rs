@@ -1,7 +1,4 @@
-import { UsersRepository } from "@/repositories/users-repository";
-import { Gym, User } from "@prisma/client";
-import { compare } from "bcryptjs";
-import { InvalidCredentialsError } from "./errors/invalid-credentials-error";
+import { Gym } from "@prisma/client";
 import { GymsRepository } from "@/repositories/gyms-repository";
 
 interface CrateGymServiceRequest {
