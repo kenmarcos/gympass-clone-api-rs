@@ -1,7 +1,7 @@
 import { FastifyInstance } from "fastify";
-import { register } from "./users/register";
-import { authenticate } from "./users/authenticate";
-import { profile } from "./users/profile";
+import { register } from "./register";
+import { authenticate } from "./authenticate";
+import { profile } from "./profile";
 import { verifyJWT } from "@/middlewares/verify-jwt";
 
 export const appRoutes = async (app: FastifyInstance) => {
