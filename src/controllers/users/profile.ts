@@ -1,10 +1,10 @@
-import { makeGetUserProfile } from "@/services/factories/make-get-user-profile-service";
+import { makeGetUserProfileService } from "@/services/factories/make-get-user-profile-service";
 import { FastifyReply, FastifyRequest } from "fastify";
 
 export const profile = async (request: FastifyRequest, reply: FastifyReply) => {
   await request.jwtVerify();
 
-  const getUserProfileService = makeGetUserProfile();
+  const getUserProfileService = makeGetUserProfileService();
 
   const { user } = await getUserProfileService.execute({
     userId: request.user.sub,
