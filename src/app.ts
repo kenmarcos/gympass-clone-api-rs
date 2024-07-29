@@ -4,6 +4,7 @@ import { env } from "./env";
 import fastifyJwt from "@fastify/jwt";
 import { usersRoutes } from "./controllers/users/routes";
 import { gymsRoutes } from "./controllers/gyms/routes";
+import { checkInsRoutes } from "./controllers/check-ins/routes";
 
 export const app = fastify();
 
@@ -15,6 +16,9 @@ app.register(usersRoutes, {
   prefix: "/api",
 });
 app.register(gymsRoutes, {
+  prefix: "/api",
+});
+app.register(checkInsRoutes, {
   prefix: "/api",
 });
 
