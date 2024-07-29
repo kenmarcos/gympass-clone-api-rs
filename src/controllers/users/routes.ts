@@ -4,7 +4,7 @@ import { authenticate } from "./authenticate";
 import { profile } from "./profile";
 import { verifyJWT } from "@/middlewares/verify-jwt";
 
-export const appRoutes = async (app: FastifyInstance) => {
+export const usersRoutes = async (app: FastifyInstance) => {
   app.post("/users", register);
 
   app.get("/me", { onRequest: [verifyJWT] }, profile);
