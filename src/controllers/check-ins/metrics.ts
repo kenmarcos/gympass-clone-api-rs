@@ -2,9 +2,9 @@ import { makeGetUserMetricsService } from "@/services/factories/make-get-user-me
 import { FastifyReply, FastifyRequest } from "fastify";
 
 export const metrics = async (request: FastifyRequest, reply: FastifyReply) => {
-  const getUSerMetricsService = makeGetUserMetricsService();
+  const getUserMetricsService = makeGetUserMetricsService();
 
-  const { checkInsCount } = await getUSerMetricsService.execute({
+  const { checkInsCount } = await getUserMetricsService.execute({
     userId: request.user.sub,
   });
 
