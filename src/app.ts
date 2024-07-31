@@ -5,12 +5,22 @@ import fastifyJwt from "@fastify/jwt";
 import { usersRoutes } from "./controllers/users/routes";
 import { gymsRoutes } from "./controllers/gyms/routes";
 import { checkInsRoutes } from "./controllers/check-ins/routes";
+import fastifyCookie from "@fastify/cookie";
 
 export const app = fastify();
 
 app.register(fastifyJwt, {
   secret: env.JWT_SECRET,
+  cookie: {
+    cookieName: "refreshToken",
+    signed: false,
+  },
+  sign: {
+    expiresIn: "10m",
+  },
 });
+
+app.register(fastifyCookie);
 
 app.register(usersRoutes, {
   prefix: "/api",
