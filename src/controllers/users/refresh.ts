@@ -4,9 +4,11 @@ export const refresh = async (request: FastifyRequest, reply: FastifyReply) => {
   // Verificar se existe refreshToken e se ele ainda é valido (não expirou)
   await request.jwtVerify({ onlyCookie: true });
 
+  const { role } = request.user;
+
   // Criar novo token JWT
   const token = await reply.jwtSign(
-    {},
+    { role },
     {
       sign: {
         sub: request.user.sub,
@@ -16,7 +18,7 @@ export const refresh = async (request: FastifyRequest, reply: FastifyReply) => {
 
   // Criar novo refresh token JWT
   const refresToken = await reply.jwtSign(
-    {},
+    { role },
     {
       sign: {
         sub: request.user.sub,
